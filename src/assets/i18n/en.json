@@ -2,5 +2,25 @@
     "Hello": "Helloeqweq",
     "Profile":"Profile",
     "Vietnam":"Việt Nam",
-    "Language":"Language"
+    "Language":"Language",
+    "UserNameRequired":"UserName is required",
+    "PasswordRequired":"Password is required",
+    "UserName":"User name",
+    "Password":"Password",
+    "Login":"Login",
+    "Register":"Register",
+    "IParking":"IParking",
+    "TitleMes":"Message",
+    "LoginFail":"Login Fail!",
+    "EventTitle":"Event manager",
+    "EVENT":{
+        "TITLE":"Tiêu đề",
+        "TARGET_DATE":"Ngày",
+        "LOCATION":"Vị trí",
+        "ACTION":"Thao tác"
+    },
+    "BUTTON":{
+        "CREATE":"Create",
+        "DELETE":"Delete"
+    }
 }

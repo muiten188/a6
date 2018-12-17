@@ -5,14 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BsComponentRoutingModule } from './bs-component-routing.module';
 import { BsComponentComponent } from './bs-component.component';
+import {SharedModule} from '../../shared/shared.module'
 import {
     AlertComponent,
     ButtonsComponent,
-    ModalComponent,
     CollapseComponent,
-    DatePickerComponent,
     DropdownComponent,
-    PaginationComponent,
     PopOverComponent,
     ProgressbarComponent,
     TabsComponent,
@@ -29,17 +27,15 @@ import { PageHeaderModule } from '../../shared';
         FormsModule,
         ReactiveFormsModule,
         NgbModule.forRoot(),
-        PageHeaderModule
+        PageHeaderModule,
+        SharedModule
     ],
     declarations: [
         BsComponentComponent,
         ButtonsComponent,
         AlertComponent,
-        ModalComponent,
         CollapseComponent,
-        DatePickerComponent,
         DropdownComponent,
-        PaginationComponent,
         PopOverComponent,
         ProgressbarComponent,
         TabsComponent,

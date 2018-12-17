@@ -8,16 +8,14 @@ import { AppConfig } from '../shared/config';
 export class LoginService {
   constructor(protected http: HttpClient) { }
 
-  login() {
-    
-    return this.http.post(AppConfig.API_USER_LOGIN,
-      {
-        "captcha": "string",
-        "password": "123456a@",
-        "username": "admin"
-      });
+  login(data) {
+    return this.http.post(AppConfig.API_USER_LOGIN,data);
   };
-
+  // {
+  //   "captcha": "string",
+  //   "password": "123456a@",
+  //   "username": "admin"
+  // }
   // logout() {
   //   return this.http.put(APP.API_USER_LOGOUT);
   // }

@@ -2,5 +2,25 @@
     "Hello": "Xin chào",
     "Profile":"Hồ sơ",
     "Vietnam":"Việt Nam",
-    "Language":"Ngôn ngữ"
+    "Language":"Ngôn ngữ",
+    "UserNameRequired":"Tên đăng nhập trống!",
+    "PasswordRequired":"Mật khẩu trống!",
+    "UserName":"Tên đăng nhập",
+    "Password":"Mật khẩu",
+    "Login":"Đăng Nhập",
+    "Register":"Đăng Ký",
+    "IParking":"Phần mềm quản lý bãi đỗ xe",
+    "TitleMes":"Thông báo",
+    "LoginFail":"Đăng nhập thất bại!",
+    "EventTitle":"Quản lý sự kiện",
+    "EVENT":{
+        "TITLE":"Tiêu đề",
+        "TARGET_DATE":"Ngày",
+        "LOCATION":"Vị trí",
+        "ACTION":"Thao tác"
+    },
+    "BUTTON":{
+        "CREATE":"Thêm mới",
+        "DELETE":"Xóa"
+    }
 }

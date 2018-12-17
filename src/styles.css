@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #ecf0f5 !important;
+}
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 900px !important;
+    }
+}
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.no-padding{
+    margin:0px !important;
+}
+.content-wrapper {
+    min-height: 100%;
+    background-color: #ecf0f5;
+    z-index: 800;
+}
+input[type='checkbox'] { 
+    width: 18px;
+    height: 18px;
+ }

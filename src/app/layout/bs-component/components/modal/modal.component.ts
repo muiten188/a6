@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,6 +9,17 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class ModalComponent {
     closeResult: string;
     constructor(private modalService: NgbModal) { }
+    public _modalTitle:string='';
+    @Input()
+    set modalTitle(value:string){
+        debugger
+        this._modalTitle=value;
+    }
+    get modalTitle(){
+        return this._modalTitle;
+    }
+    
+    @Output() public closeModal=new EventEmitter();
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
@@ -26,5 +37,9 @@ export class ModalComponent {
         } else {
             return  `with: ${reason}`;
         }
+    }
+
+    onCloseModal(){
+        this.closeModal.emit();
     }
 }
