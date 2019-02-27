@@ -1,33 +1,33 @@
-<div class="login-page" [@routerTransition]>
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>{{ 'IParking'|translate }}</h1>
-            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                <div class="form-content">
-                    <div class="row"></div>
-                    <div class="form-group">
-                        <input type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" [(ngModel)]="login.username" class="form-control input-underline input-lg"
-                            id="idUserName" placeholder="{{'username'|translate}}">
-                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div *ngIf="f.username.errors.required">{{'UserNameRequired'|translate}}</div>
-                            <!-- {'UserNameRequired'|translate} -->
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="login.password" class="form-control input-underline input-lg"
-                            id="idPassword" placeholder="{{'Password'|translate}}">
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">{{'PasswordRequired'|translate}}</div>
-                            
-                        </div>
+<body>
+    <div class="login" [@routerTransition]>
+        <div class="photo"></div>
+        <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div id="u" class="form-group">
+                <input type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                    class="form-control input-underline input-lg" id="idUserName">
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">
+                        <div *ngIf="f.username.errors.required">{{'UserNameRequired'|translate}}</div>
                     </div>
                 </div>
-                <input class="btn rounded-btn" type="submit" value="{{'Login'|translate}}">
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">{{'Register'|translate}}</a>
-            </form>
-        </div>
+                <span class="form-highlight"></span> <span class="form-bar"></span>
+                <label for="username" class="float-label">Tài khoản</label>
+            </div>
+            <div id="p" class="form-group">
+                <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                    class="form-control input-underline input-lg" id="idPassword">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">{{'PasswordRequired'|translate}}</div>
+                </div>
+
+                <span class="form-highlight"></span> <span class="form-bar"></span> <label for="password" class="float-label">Mất
+                    khẩu</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="rem"> <label for="rem">Ghi
+                    nhớ đăng nhập</label>
+                <button id="submit" type="submit" ripple>Đăng nhập</button>
+            </div>
+        </form>
     </div>
-</div>
+</body>

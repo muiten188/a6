@@ -6,7 +6,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import {SharedModule} from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
     imports: [
         SharedModule,
@@ -19,6 +19,6 @@ import {SharedModule} from '../shared/shared.module';
         LayoutComponent,
         SidebarComponent,
         HeaderComponent
-        ]
+    ]
 })
 export class LayoutModule { }

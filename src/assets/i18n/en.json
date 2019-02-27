@@ -11,16 +11,20 @@
     "Register":"Register",
     "IParking":"IParking",
     "TitleMes":"Message",
-    "LoginFail":"Login Fail!",
+    "LoginFail":"Username or password invalid, please enter try again!",
     "EventTitle":"Event manager",
     "EVENT":{
-        "TITLE":"Tiêu đề",
-        "TARGET_DATE":"Ngày",
-        "LOCATION":"Vị trí",
-        "ACTION":"Thao tác"
+        "TITLE":"Title",
+        "TARGET_DATE":"Date",
+        "LOCATION":"Location",
+        "ACTION":"Action"
     },
     "BUTTON":{
         "CREATE":"Create",
         "DELETE":"Delete"
+    },"MENU":{
+        "EventManager":"Event manager",
+        "Dashboard":"Dashboard",
+        "UserManager":"User manager"
     }
 }

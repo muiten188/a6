@@ -1,8 +1,18 @@
 import { NgModule } from '@angular/core';
-import { PaginationComponent,ModalComponent,DatePickerComponent } from '../layout/bs-component/components';
+import {
+    PaginationComponent,
+    ModalComponent,
+    DatePickerComponent,
+    PieChartComponent,
+    AxisChartComponent,
+    ClusteredChartComponent,
+    StackChartComponent,
+    LineChartComponent,
+    CardChartComponent
+} from '../layout/components';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import {CdatepickerDirective} from '../layout/directive/cdatepicker.directive';
+
 @NgModule({
     imports: [
         NgbModule.forRoot(),
@@ -12,13 +22,23 @@ import {CdatepickerDirective} from '../layout/directive/cdatepicker.directive';
         PaginationComponent,
         ModalComponent,
         DatePickerComponent,
-        CdatepickerDirective
+        PieChartComponent,
+        AxisChartComponent,
+        ClusteredChartComponent,
+        CardChartComponent,
+        StackChartComponent,
+        LineChartComponent
     ],
     exports: [
         PaginationComponent,
         ModalComponent,
         DatePickerComponent,
-        CdatepickerDirective
+        PieChartComponent,
+        AxisChartComponent,
+        ClusteredChartComponent,
+        CardChartComponent,
+        StackChartComponent,
+        LineChartComponent
     ]
 })
 export class SharedModule { }

@@ -1,0 +1,50 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="borderChart" style="width: 100%; height: 450px">
+                <h6 class="text-center">Biểu đồ hiện trạng các bãi xe</h6>
+                <app-card-chart [data]="total_RevenueByMonth" [id]="'appline1'">
+    
+                </app-card-chart>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Doanh thu ngày hôm nay</h6>
+                <div class="chartContainer">
+                    <app-pie-chart style="width:100%;" [data]="total_revenueToday" [id]="'pieChar1'" [valueTitle]="'value'"
+                        [categoryTitle]="'key'">
+                        <div class="row">
+                            <div id="pieChar1" style="width: 95%; height: 400px;    margin: auto;"></div>
+                        </div>
+                    </app-pie-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Doanh thu các loại thẻ</h6>
+                <app-clustered-chart [data]="total_MoneyByVehicle" [id]="'clusteredChart1'" [categoryTitle]="'key'"
+                    [configField]="configField">
+                    <div class="row">
+                        <div id="clusteredChart1" style="width: 100%; height: 400px"></div>
+                    </div>
+                </app-clustered-chart>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Doanh thu bãi đỗ xe Helios 1</h6>
+                <app-stack-chart [data]="total_RevenueByMonth" [id]="'stackchart1'" [configField]="stackChartConfig">
+                    <div class="row">
+                        <div id="stackchart1" style="width: 100%; height: 400px"></div>
+                    </div>
+                </app-stack-chart>
+            </div>
+        </div>
+    </div>
+</div>

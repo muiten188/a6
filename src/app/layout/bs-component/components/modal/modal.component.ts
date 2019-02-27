@@ -12,7 +12,6 @@ export class ModalComponent {
     public _modalTitle:string='';
     @Input()
     set modalTitle(value:string){
-        debugger
         this._modalTitle=value;
     }
     get modalTitle(){

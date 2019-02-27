@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { HttpClient, HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +8,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthGuard } from './shared/guard';
 import { ToastrModule } from 'ngx-toastr';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import {SharedModule} from './shared/shared.module';
-import { MyHttpInterceptor } from './shared/my-http-interceptor'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AuthInterceptor } from './auth/auth-interceptor';
 export const createTranslateLoader = (http: HttpClient) => {
   /* for development
   return new TranslateHttpLoader(
@@ -30,6 +30,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     SharedModule,
     NgbModule,
     BrowserAnimationsModule,
+    AmChartsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -44,7 +45,7 @@ export const createTranslateLoader = (http: HttpClient) => {
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS,
-    useClass: MyHttpInterceptor,
+    useClass: AuthInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

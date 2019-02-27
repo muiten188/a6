@@ -9,13 +9,13 @@ export class CdatepickerDirective {
 
   constructor( private renderer : Renderer2, 
                private element : ElementRef ) {
-                debugger;
+                
   }
   
   onChange;
   @HostListener('input', [ '$event.target.value' ])
   input( value ) {
-    debugger;
+    
     this.onChange(value.split(',').filter(Boolean));
   }
   writeValue( value : any ) : void {

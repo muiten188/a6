@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
+import { SidebarService } from './sidebar.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
@@ -12,15 +13,25 @@ export class SidebarComponent {
     collapsed: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
-
+    public sideBarMenu = [];
     @Output() collapsedEvent = new EventEmitter<boolean>();
-    
-    constructor(private translate: TranslateService, public router: Router) {
+
+    constructor(private translate: TranslateService,
+        public router: Router,
+        public sidebarService: SidebarService,
+        private toastrService: ToastrService ) {
         // this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         // this.translate.setDefaultLang('en');
         // const browserLang = this.translate.getBrowserLang();
         // this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
-
+        this.sidebarService.getSidebar().subscribe(
+            (data: any) => {
+                this.sideBarMenu = data;
+            },
+            error => {
+                this.toastrService.error("Không thể lấy danh sách menu", this.translate.instant('TitleMes'));
+            }
+        );
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&
@@ -70,5 +81,6 @@ export class SidebarComponent {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+        window.sessionStorage.clear();
     }
 }

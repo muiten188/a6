@@ -1,77 +1,65 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Bar Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Biểu đồ hiện trạng các bãi xe</h6>
+                <div class="chartContainer">
+                    <app-line-chart [data]="total_Money" [id]="'appline1'">
+                        <div class="row">
+                            <div id="appline1" style="width: 100%; height: 200px"></div>
+                        </div>
+                    </app-line-chart>
                 </div>
             </div>
         </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Doughnut Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Radar Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Pie Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Biểu đồ doanh thu theo ngày</h6>
+                <div class="chartContainer">
+                    <app-pie-chart style="width:100%;" [data]="total_money_today" [id]="'pieChar1'" [valueTitle]="'totalMoney'"
+                        [categoryTitle]="'centerName'">
+                        <div class="row">
+                            <div id="pieChar1" style="width: 95%; height: 200px;    margin: auto;"></div>
+                        </div>
+                    </app-pie-chart>
                 </div>
             </div>
         </div>
     </div>
+    <br />
     <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Polar Area Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Biểu đồ doanh thu theo loại xe</h6>
+                <div class="chartContainer">
+                    <app-clustered-chart [data]="total_MoneyByVehicle" [id]="'clusteredChart1'" [configField]="configChart">
+                        <div class="row">
+                            <div id="clusteredChart1" style="width: 100%; height: 400px"></div>
+                        </div>
+                    </app-clustered-chart>
                 </div>
             </div>
         </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Line Chart
+        <div class="col-sm-6">
+            <div class="borderChart">
+                <h6 class="text-center">Biểu đồ khách hàng đăng ký mới</h6>
+                <div class="chartContainer">
+                    <app-axis-chart></app-axis-chart>
                 </div>
-                <div class="card-body">
-                    <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="borderChart">
+                <h6 class="text-center">Biểu đồ doanh thu theo từng tháng trong năm</h6>
+                <app-stack-chart [data]="total_Money_By_Year" [id]="'stackchart1'" [configField]="stackChartConfig">
+                    <div class="row">
+                        <div id="stackchart1" style="width: 100%; height: 400px"></div>
+                    </div>
+                </app-stack-chart>
             </div>
         </div>
     </div>

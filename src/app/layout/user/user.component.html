@@ -1,0 +1,208 @@
+<div [@routerTransition] class="content-wrapper">
+  <!-- <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
+  <section class="content-header">
+    <h2 class="text-center">{{ 'UserTitle' | translate }}</h2>
+    <br>
+  </section>
+  <section class="content">
+    <div class="box-body">
+      <div class="row form-search clearfix">
+        <div class="col-sm-9 search-controls">
+          <div class="row">
+
+          </div>
+        </div>
+        <div class="col-sm-3 search-buttons">
+          <button type="submit" (click)="openModal(content)" class="col-sm-6 btn btn-primary btn-sm">
+            <i class="fa fa-plus"></i> {{ 'BUTTON.CREATE' | translate }}
+          </button>
+          <button type="button" class="col-sm-6 btn btn-danger btn-sm">
+            <i class="fa fa-trash"></i> {{ 'BUTTON.DELETE' | translate }}</button>
+        </div>
+      </div>
+      <br>
+      <div class="box">
+        <table class="table table-bordered table-hover table-custom" st-table st-click="ctrl.onSearch(paging)">
+          <thead>
+            <tr>
+              <th class="text-center" style="width: 30px">
+                <div class="text-center">
+                  <input type="checkbox" ng-click="ctrl.onCheckAll()" ng-model="ctrl.isCheckAll" />
+                </div>
+              </th>
+              <th>{{'USER.NAME'|translate}}</th>
+              <th>{{'USER.USER_NAME' | translate }}</th>
+              <th>{{'USER.GENDER'|translate}}</th>
+              <th>{{'USER.BIRTHDAY'|translate}}</th>
+              <th>{{'USER.ROLE' | translate }}</th>
+              <th>{{'USER.AVATAR' | translate }}</th>
+              <th class="text-center">{{ 'EVENT.ACTION' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of results; let i = index">
+              <td class="text-center">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-click="ctrl.onCheckItem(model.uid)" ng-model="ctrl.checkBoxes[model.uid]" />
+                  </label>
+                </div>
+              </td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.username }}</td>
+              <td>{{ item.gender }}</td>
+              <td>{{ item.birthday|date:'dd/MM/yyyy' }}</td>
+              <td>{{ item.role }}</td>
+              <td>{{ item.imagePath }}</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-primary btn-xs" ng-click="ctrl.onUpdate(model)" sm-permission="ROLE.EVENT.UPDATE">
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="ctrl.onDelete(model)" sm-permission="ROLE.EVENT.DELETE">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <app-pagination *ngIf="true" class="pagination-sm" [totalItems]="user.totalElement" [(page)]="user.currentPage"
+          [pageSize]="user.pageSize" (onPageChange)="onPageChange($event)">
+        </app-pagination>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <ng-template #content let-c="close" let-d="dismiss">
+    <app-modal [modalTitle]="'Thêm mới/cập nhật người dùng'" (closeModal)="c('Close click')">
+      <div class="modal-body">
+        <form novalidate name="formApp" class="form-horizontal" ng-submit="formApp.$valid && ctrl.onSubmit()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Example label</label>
+              <app-date-picker [(ngModel)]="event.date" (ngModelChange)="test($event)"></app-date-picker>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Another label</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button ng-disabled="!formApp.$dirty || !formApp.$valid" type="submit" class="btn btn-primary">
+              <i ng-class="(event.eventId ? 'fa fa-edit' : 'fa fa-plus')"></i> {{ (event.eventId ? 'BUTTON.UPDATE'
+              : 'BUTTON.CREATE') | translate }}
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+          </div>
+        </form>
+      </div>
+    </app-modal>
+  </ng-template> -->
+  <div id="new-user" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 100%">
+        <div class="modal-header" style="background-color: #86c5e8;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modal-title-car">Them moi/cap nhat nguoi dung</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-body" data-wow-delay=".5s">
+            <form class="form-horizontal" id="form-data" enctype="multipart/form-data">
+              <input type="hidden" name="userId" id="user-id" />
+              <div class="col-sm-6">
+                <div style="align-content: center">
+                  <img alt="" src="static/img/avata.jpg" id="profile-image" class="img-circle img-responsive">
+                  <input type="file" name="avatar" id="profile-image-upload" class="filestyle" data-icon="true" />
+                  <div style="color: #999;">Ảnh đại diện</div>
+                </div>
+                <br>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Họ tên<span class="required" style="color: red;">*</span></label>
+                  <div class="col-sm-8">
+                    <input class="form-control" name="fullName" id="full-name" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Ngày sinh</label>
+                  <div class="col-sm-8">
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input name="birthday" class="form-control pull-right" id="birthday-id" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Số điện thoại</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" name="phoneNumber" id="phone-number" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Tên đăng nhập<span class="required" style="color: red;">*</span></label>
+                  <div class="col-sm-8">
+                    <input class="form-control" name="username" id="username-id" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Mật khẩu<span class="required" style="color: red;">*</span></label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" name="password" id="password-id" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Mật khẩu xác nhận<span class="required" style="color: red;">*</span></label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" name="passwordConfirm" id="confirm-id" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Quyền hệ thống<span class="required" style="color: red;">*</span></label>
+                  <div class="col-sm-8">
+                    <select name="roleId" id="roles-id"
+                      class="form-control" style="width: 100%;">
+                      <option value="0">Vui lòng chọn</option>
+                      <option value="0">Admin</option>
+                      <option value="0">User</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12" style="float: left;">
+                <button type="button" class="btn btn-primary" id="reset-form">
+                  <i class="fa fa-refresh"></i>&nbsp&nbsp Reset
+                </button>
+                <button type="button" class="btn btn-primary" id="submit-form">
+                  <i class="fa fa-save"></i>&nbsp&nbsp Lưu lại
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div style="float: left; font-size: 20px;">
+            <span id="message-result-user"></span>
+          </div>
+          <button type="button" id="close-pop-car" class="btn btn-default"
+            data-dismiss="modal">Đóng lại</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
